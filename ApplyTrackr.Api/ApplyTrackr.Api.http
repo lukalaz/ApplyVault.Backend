@@ -1,0 +1,6 @@
+@ApplyVault.Api_HostAddress = http://localhost:5151
+
+GET {{ApplyVault.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

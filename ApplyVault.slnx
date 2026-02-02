@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="ApplyTrackr.Api/ApplyTrackr.Api.csproj" />
+  <Project Path="ApplyTrackr.Application/ApplyTrackr.Application.csproj" />
+  <Project Path="ApplyTrackr.Domain/ApplyTrackr.Domain.csproj" />
+  <Project Path="Infrastructure/ApplyTrackr.Infrastructure.csproj" />
+</Solution>
