@@ -1,0 +1,100 @@
+############################################
+# OS junk
+############################################
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+############################################
+# Visual Studio / Rider / JetBrains
+############################################
+.vs/
+.idea/
+*.iml
+
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+_ReSharper*/
+*.DotSettings.user
+
+############################################
+# Build outputs
+############################################
+bin/
+obj/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+artifacts/
+
+############################################
+# Test results / coverage
+############################################
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+############################################
+# NuGet / tooling
+############################################
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+msbuild.binlog
+
+# Local dotnet tool cache (optional)
+.dotnet/
+
+############################################
+# ASP.NET / Secrets / Certificates
+############################################
+secrets.json
+*.pfx
+*.p12
+*.pem
+*.key
+
+############################################
+# App settings / environment overrides
+############################################
+# Commit appsettings.json, but ignore environment-specific real configs
+**/appsettings.*.json
+!**/appsettings.json
+
+# Optional: allow committing example templates
+!**/appsettings.Development.json.example
+!**/appsettings.Production.json.example
+
+############################################
+# Local DB files (if you ever use them)
+############################################
+*.mdf
+*.ldf
+*.sqlite
+*.db
+
+############################################
+# Logs
+############################################
+logs/
+*.log
+
+############################################
+# Docker local overrides (if you add docker later)
+############################################
+docker-compose.override.yml
+
+############################################
+# Misc
+############################################
+*.tmp
+*.temp
+*.bak
