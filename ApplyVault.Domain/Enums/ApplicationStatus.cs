@@ -1,4 +1,4 @@
-namespace ApplyVault.Domain;
+namespace ApplyVault.Domain.Enums;
 
 public enum ApplicationStatus
 {
