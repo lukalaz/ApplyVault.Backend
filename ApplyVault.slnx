@@ -2,8 +2,8 @@
   <Folder Name="/Solution Items/">
     <File Path=".gitignore" />
   </Folder>
-  <Project Path="ApplyTrackr.Api/ApplyVault.Api.csproj" />
-  <Project Path="ApplyTrackr.Application/ApplyVault.Application.csproj" />
-  <Project Path="ApplyTrackr.Domain/ApplyVault.Domain.csproj" />
-  <Project Path="Infrastructure/ApplyVault.Infrastructure.csproj" />
+  <Project Path="ApplyVault.Api/ApplyVault.Api.csproj" />
+  <Project Path="ApplyVault.Application/ApplyVault.Application.csproj" />
+  <Project Path="ApplyVault.Domain/ApplyVault.Domain.csproj" />
+  <Project Path="ApplyVault.Infrastructure/ApplyVault.Infrastructure.csproj" />
 </Solution>
