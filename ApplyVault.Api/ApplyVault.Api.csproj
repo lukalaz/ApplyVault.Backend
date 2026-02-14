@@ -10,5 +10,9 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.3" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApplyVault.Infrastructure\ApplyVault.Infrastructure.csproj" />
+    <ProjectReference Include="..\ApplyVault.Domain\ApplyVault.Domain.csproj" />
+  </ItemGroup>
 
 </Project>
