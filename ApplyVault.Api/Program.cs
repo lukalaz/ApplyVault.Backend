@@ -1,4 +1,5 @@
 using ApplyVault.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -24,6 +24,33 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApplyVault API v1");
         c.RoutePrefix = "swagger";
     });
+}
+
+// Apply EF Core migrations (or create database if migrations are not present)
+using (var scope = app.Services.CreateScope())
+{
+    var logger = app.Logger;
+    try
+    {
+        var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        db.Database.Migrate();
+        logger.LogInformation("Database migrated successfully.");
+    }
+    catch (Exception ex)
+    {
+        // If migrations cannot be applied in this environment, fall back to EnsureCreated
+        app.Logger.LogWarning(ex, "Migrations could not be applied; attempting EnsureCreated().");
+        try
+        {
+            var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            db.Database.EnsureCreated();
+            logger.LogInformation("Database ensured/created successfully.");
+        }
+        catch (Exception e)
+        {
+            logger.LogError(e, "Failed to create or migrate the database.");
+        }
+    }
 }
 
 
