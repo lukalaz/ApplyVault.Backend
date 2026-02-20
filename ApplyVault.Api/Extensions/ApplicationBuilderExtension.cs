@@ -1,4 +1,4 @@
-﻿using ApplyVault.Infrastructure.Persistence;
+﻿using ApplyVault.Infrastructure.Persistence.EFCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApplyVault.Api.Extensions;

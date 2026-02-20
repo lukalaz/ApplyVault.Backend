@@ -4,7 +4,11 @@ namespace ApplyVault.Domain.Entities;
 
 public class JobApplication
 {
-    public Guid Id { get; private set; } = Guid.NewGuid();
+    // EF Core needs a parameterless constructor; private is fine for EF,
+    // but it makes `new JobApplication { ... }` impossible from outside.
+    private JobApplication() { }
+
+    public Guid Id { get; private set; }
 
     public string Company { get; private set; } = string.Empty;
     public string Role { get; private set; } = string.Empty;
@@ -27,29 +31,80 @@ public class JobApplication
     public DateTime? NextActionDate { get; private set; }
 
     public string Notes { get; private set; } = string.Empty;
+
     public string Link { get; private set; } = string.Empty;
 
-    // EF Core needs a parameterless constructor
-    private JobApplication() { }
-
-    public JobApplication(
+    public static JobApplication Create(
         string company,
         string role,
-        string? location = null,
-        bool isRemote = false,
-        string? referral = null,
-        string? contactPerson = null,
-        DateTime? dateApplied = null,
-        string? compensationRange = null,
-        DateTime? lastTouch = null,
-        string? nextAction = null,
-        DateTime? nextActionDate = null,
-        string? notes = null,
-        string? link = null
-    )
+        string? location,
+        bool isRemote,
+        string? referral,
+        string? contactPerson,
+        DateTime? dateApplied,
+        ApplicationStatus status,
+        string? compensationRange,
+        DateTime? lastTouch,
+        string? nextAction,
+        DateTime? nextActionDate,
+        string? notes,
+        string? link)
     {
-        SetCompany(company);
-        SetRole(role);
+        if (string.IsNullOrWhiteSpace(company))
+            throw new ArgumentException("Company is required.", nameof(company));
+
+        if (string.IsNullOrWhiteSpace(role))
+            throw new ArgumentException("Role is required.", nameof(role));
+
+        var entity = new JobApplication
+        {
+            Id = Guid.NewGuid()
+        };
+
+        entity.Update(
+            company,
+            role,
+            location,
+            isRemote,
+            referral,
+            contactPerson,
+            dateApplied,
+            status,
+            compensationRange,
+            lastTouch,
+            nextAction,
+            nextActionDate,
+            notes,
+            link
+        );
+
+        return entity;
+    }
+
+    public void Update(
+        string company,
+        string role,
+        string? location,
+        bool isRemote,
+        string? referral,
+        string? contactPerson,
+        DateTime? dateApplied,
+        ApplicationStatus status,
+        string? compensationRange,
+        DateTime? lastTouch,
+        string? nextAction,
+        DateTime? nextActionDate,
+        string? notes,
+        string? link)
+    {
+        if (string.IsNullOrWhiteSpace(company))
+            throw new ArgumentException("Company is required.", nameof(company));
+
+        if (string.IsNullOrWhiteSpace(role))
+            throw new ArgumentException("Role is required.", nameof(role));
+
+        Company = company.Trim();
+        Role = role.Trim();
 
         Location = location?.Trim() ?? string.Empty;
         IsRemote = isRemote;
@@ -58,6 +113,7 @@ public class JobApplication
         ContactPerson = contactPerson?.Trim() ?? string.Empty;
 
         DateApplied = dateApplied;
+        Status = status;
 
         CompensationRange = compensationRange?.Trim() ?? string.Empty;
 
@@ -68,27 +124,5 @@ public class JobApplication
 
         Notes = notes?.Trim() ?? string.Empty;
         Link = link?.Trim() ?? string.Empty;
-    }
-
-    public void UpdateStatus(ApplicationStatus status) => Status = status;
-
-    public void UpdateLastTouch(DateTime? lastTouch) => LastTouch = lastTouch;
-
-    public void UpdateNotes(string? notes) => Notes = notes?.Trim() ?? string.Empty;
-
-    private void SetCompany(string company)
-    {
-        if (string.IsNullOrWhiteSpace(company))
-            throw new ArgumentException("Company is required.", nameof(company));
-
-        Company = company.Trim();
-    }
-
-    private void SetRole(string role)
-    {
-        if (string.IsNullOrWhiteSpace(role))
-            throw new ArgumentException("Role is required.", nameof(role));
-
-        Role = role.Trim();
     }
 }

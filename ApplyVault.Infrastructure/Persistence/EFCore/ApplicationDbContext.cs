@@ -1,7 +1,8 @@
 ﻿using ApplyVault.Domain.Entities;
+using ApplyVault.Infrastructure.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApplyVault.Infrastructure.Persistence;
+namespace ApplyVault.Infrastructure.Persistence.EFCore;
 
 public class ApplicationDbContext : DbContext
 {
@@ -14,7 +15,7 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        modelBuilder.ApplyConfiguration(new JobApplicationConfiguration());
         base.OnModelCreating(modelBuilder);
     }
 }

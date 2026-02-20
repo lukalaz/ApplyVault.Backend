@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+
+	<ItemGroup>
+		<ProjectReference Include="..\ApplyVault.Domain\ApplyVault.Domain.csproj" />
+	</ItemGroup>
+	
 </Project>

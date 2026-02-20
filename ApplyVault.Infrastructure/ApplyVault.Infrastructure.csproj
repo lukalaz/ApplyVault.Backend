@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApplyVault.Domain\ApplyVault.Domain.csproj" />
+	<ProjectReference Include="..\ApplyVault.Application\ApplyVault.Application.csproj" />
   </ItemGroup>
 
 </Project>

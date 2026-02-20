@@ -1,4 +1,4 @@
-using ApplyVault.Infrastructure.Persistence;
+using ApplyVault.Infrastructure.Persistence.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
