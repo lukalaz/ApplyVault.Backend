@@ -1,6 +1,6 @@
 ﻿using ApplyVault.Domain.Enums;
 
-namespace ApplyVault.Api.Dtos.JobApplications;
+namespace ApplyVault.Application.Dtos.JobApplications;
 
 public record JobApplicationResponseDto(
     Guid Id,

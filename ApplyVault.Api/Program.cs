@@ -1,7 +1,11 @@
 using ApplyVault.Api.Extensions;
+using ApplyVault.Application.Interfaces;
 using ApplyVault.Infrastructure;
+using ApplyVault.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IJobApplicationService, JobApplicationService>();
 
 builder.Services.AddControllers();
 

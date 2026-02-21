@@ -1,8 +1,9 @@
 ﻿using ApplyVault.Domain.Enums;
 
-namespace ApplyVault.Api.Dtos.JobApplications;
+namespace ApplyVault.Application.Commands.JobApplications;
 
-public record UpdateJobApplicationRequestDto(
+public sealed record UpdateJobApplicationCommand(
+    Guid Id,
     string Company,
     string Role,
     string? Location,

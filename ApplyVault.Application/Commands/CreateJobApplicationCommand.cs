@@ -1,8 +1,8 @@
 ﻿using ApplyVault.Domain.Enums;
 
-namespace ApplyVault.Api.Dtos.JobApplications;
+namespace ApplyVault.Application.Commands.JobApplications;
 
-public record CreateJobApplicationRequestDto(
+public sealed record CreateJobApplicationCommand(
     string Company,
     string Role,
     string? Location,
